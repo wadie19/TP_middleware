@@ -1,0 +1,17 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "API to manage users.",
+        "title": "middleware/example",
+        "contact": {
+            "name": "Justine Bachelard.",
+            "email": "justine.bachelard@ext.uca.fr"
+        },
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "paths": {}
+}

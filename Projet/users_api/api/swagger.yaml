@@ -1,0 +1,12 @@
+basePath: /
+info:
+  contact:
+    email: justine.bachelard@ext.uca.fr
+    name: Justine Bachelard.
+  description: API to manage users.
+  title: middleware/example
+  version: 1.0.0
+paths: {}
+schemes:
+- http
+swagger: "2.0"
