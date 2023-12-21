@@ -1,0 +1,143 @@
+basePath: /
+definitions:
+  models.Song:
+    properties:
+      artiste:
+        type: string
+      description:
+        type: string
+      duree:
+        type: string
+      id:
+        type: string
+      release_date:
+        type: string
+      titre:
+        type: string
+    type: object
+info:
+  contact:
+    email: Mohamed_Wadie.REZGUI@etu.uca.fr
+    name: REZGUI Mohamed Wadie.
+  description: API to manage Songs.
+  title: middleware/example
+  version: 1.0.0
+paths:
+  /songs:
+    get:
+      description: Get songs.
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Song'
+            type: array
+        "500":
+          description: Something went wrong
+      summary: Get songs.
+      tags:
+      - songs
+    post:
+      consumes:
+      - application/json
+      description: Endpoint pour ajouter une nouvelle song.
+      parameters:
+      - description: Nouvelle song à ajouter
+        in: body
+        name: song
+        required: true
+        schema:
+          $ref: '#/definitions/models.Song'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: string
+        "400":
+          description: Requête invalide
+        "500":
+          description: Erreur interne du serveur
+      summary: Ajouter une nouvelle song.
+      tags:
+      - songs
+  /songs/{id}:
+    delete:
+      description: Endpoint pour supprimer une song existante.
+      parameters:
+      - description: ID de la song à supprimer
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "400":
+          description: ID de song invalide
+        "404":
+          description: song non trouvée
+        "500":
+          description: Erreur interne du serveur
+      summary: Supprimer une song.
+      tags:
+      - songs
+    get:
+      description: Get a song.
+      parameters:
+      - description: song UUID formatted ID
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Song'
+        "422":
+          description: Cannot parse id
+        "500":
+          description: Something went wrong
+      summary: Get a song.
+      tags:
+      - songs
+    put:
+      consumes:
+      - application/json
+      description: Endpoint pour modifier une song existante.
+      parameters:
+      - description: ID de la song à modifier
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Nouvelle valeur de la song
+        in: body
+        name: song
+        required: true
+        schema:
+          $ref: '#/definitions/models.Song'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Requête invalide
+        "404":
+          description: song non trouvée
+        "500":
+          description: Erreur interne du serveur
+      summary: Modifier une song.
+      tags:
+      - songs
+schemes:
+- http
+swagger: "2.0"
